@@ -1,11 +1,12 @@
 import React from "react";
 import { Outlet } from "react-router";
+import Navbar from "../components/Navbar";
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="gradient-bg h-screen">
       <header>
-        <nav>navbar</nav>
+        <Navbar />
       </header>
       <main>
         <Outlet />

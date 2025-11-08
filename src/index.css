@@ -1,3 +1,51 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import "tailwindcss";
 @plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #9f62f2;
+  --color-secondary: #001931;
+}
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #632ee3, #9f62f2);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.btn-primary {
+  @apply bg-linear-to-r from-[#632EE3] to-[#9F62F2] text-base-100 border-0;
+}
+
+.active {
+  @apply text-primary font-semibold;
+}
+
+.shadow-glow {
+  @apply shadow-[0_0_15px_2px_rgba(71,37,244,0.6)];
+}
+
+.gradient-bg {
+  background-color: #f6f5f8;
+  background-image: radial-gradient(
+      at 20% 10%,
+      rgba(175, 71, 235, 0.3) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 80% 10%, rgba(117, 240, 240, 0.3) 0px, transparent 50%),
+    radial-gradient(at 20% 80%, rgba(240, 117, 158, 0.3) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, rgba(117, 179, 240, 0.3) 0px, transparent 50%);
+}
+
+.glass-blur {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
