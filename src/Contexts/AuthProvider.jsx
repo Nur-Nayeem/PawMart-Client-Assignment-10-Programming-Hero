@@ -37,6 +37,9 @@ const AuthProvider = ({ children }) => {
     await updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photourl,
+    }).then(() => {
+      setUser(auth.currentUser);
+      setAuthLoading(false);
     });
   };
 
