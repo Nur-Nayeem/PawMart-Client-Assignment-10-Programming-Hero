@@ -1,9 +1,11 @@
-import React from "react";
+import React, { use } from "react";
 import { MdOutlineHealthAndSafety, MdOutlineToys } from "react-icons/md";
 import { PiBowlFood, PiDog } from "react-icons/pi";
 import { Link } from "react-router";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 const CategorySection = () => {
+  const { theme } = use(ThemeContext);
   return (
     <div className="my-10">
       <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
@@ -13,7 +15,9 @@ const CategorySection = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-4 px-2.5">
         <Link
           to={"/pets-and-supplies"}
-          className="flex flex-1 gap-3 rounded-xl glass-blur-dark p-5 flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+          className={`flex flex-1 gap-3 rounded-xl  ${
+            theme == "light" ? "glass-blur" : "glass-blur-dark"
+          } p-5 flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
         >
           <div className="text-white bg-linear-to-r from-blue-400 to-cyan-400 rounded-full p-3">
             <PiDog className="text-5xl" />
@@ -29,7 +33,9 @@ const CategorySection = () => {
         </Link>
         <Link
           to={"/pets-and-supplies"}
-          className="flex flex-1 gap-3 rounded-xl glass-blur-dark p-5 flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+          className={`flex flex-1 gap-3 rounded-xl ${
+            theme == "light" ? "glass-blur" : "glass-blur-dark"
+          } p-5 flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
         >
           <div className="text-white bg-linear-to-r from-orange-400 to-red-400 rounded-full p-3">
             <PiBowlFood className="text-5xl" />
@@ -45,7 +51,9 @@ const CategorySection = () => {
         </Link>
         <Link
           to={"/pets-and-supplies"}
-          className="flex flex-1 gap-3 rounded-xl glass-blur-dark p-5 flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+          className={`flex flex-1 gap-3 rounded-xl  ${
+            theme == "light" ? "glass-blur" : "glass-blur-dark"
+          } p-5 flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
         >
           <div className="text-white bg-linear-to-l from-purple-400 to-pink-400 rounded-full p-3">
             <MdOutlineToys className="text-5xl" />
@@ -61,7 +69,9 @@ const CategorySection = () => {
         </Link>
         <Link
           to={"/pets-and-supplies"}
-          className="flex flex-1 gap-3 rounded-xl glass-blur-dark p-5 flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+          className={`flex flex-1 gap-3 rounded-xl  ${
+            theme == "light" ? "glass-blur" : "glass-blur-dark"
+          } p-5 flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
         >
           <div className="text-white bg-linear-to-r from-green-400 to-emerald-400 rounded-full p-3">
             <MdOutlineHealthAndSafety className="text-5xl" />

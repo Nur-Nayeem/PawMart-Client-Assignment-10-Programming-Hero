@@ -1,7 +1,9 @@
-import React from "react";
+import React, { use } from "react";
 import { CiLocationOn } from "react-icons/ci";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 const ListingCard = ({ category = "food" }) => {
+  const { theme } = use(ThemeContext);
   const badges =
     (category == "acceddoris" && "bg-[#ff9a85]/30 text-[#8b3f2f]") ||
     (category == "pet" && "bg-[#8ad6c9] text-[#006251]") ||
@@ -9,7 +11,11 @@ const ListingCard = ({ category = "food" }) => {
     "bg-primary/70 text-gray-200";
 
   return (
-    <div className="flex flex-col rounded-xl glass-blur-dark overflow-hidden shadow-sm hover:scale-103 transition-transform duration-300">
+    <div
+      className={`flex flex-col rounded-xl ${
+        theme == "light" ? "glass-blur" : "glass-blur-dark"
+      } overflow-hidden shadow-sm hover:scale-103 transition-transform duration-300`}
+    >
       <img
         alt="A fluffy white cat napping in a plush pet bed"
         className="w-full h-52 object-cover"
