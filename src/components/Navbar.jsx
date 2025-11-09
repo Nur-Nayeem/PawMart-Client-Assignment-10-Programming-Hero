@@ -47,7 +47,7 @@ const Navbar = () => {
         </div>
         <Link to={"/"} className="text-xl font-bold flex items-center gap-1.5">
           <span className="text-2xl gradient-text">PawsMart</span>
-          <img src="./pawprint.png" alt="logo-icon" className="w-6 h-6" />
+          <img src="/pawprint.png" alt="logo-icon" className="w-6 h-6" />
         </Link>
       </div>
       <div className="flex items-center">
@@ -76,13 +76,13 @@ const Navbar = () => {
         />
 
         <Link
-          to={"/login"}
+          to={"/auth/login"}
           className="hidden sm:block shadow-glow hover:scale-105 transition-transform duration-300 py-2 px-4 rounded-full font-bold cursor-pointer "
         >
           Login
         </Link>
         <Link
-          to={"/register"}
+          to={"/auth/register"}
           className="hidden sm:block btn-primary shadow-glow hover:scale-105 transition-transform duration-300 text-white py-2 px-4 rounded-full font-bold cursor-pointer "
         >
           Register
@@ -90,7 +90,7 @@ const Navbar = () => {
 
         {/* mobile e only login btn dekhabe */}
         <Link
-          to={"/login"}
+          to={"/auth/login"}
           className="block sm:hidden btn-primary shadow-glow hover:scale-105 transition-transform duration-300 text-white py-2 px-4 rounded-full font-bold cursor-pointer "
         >
           Login

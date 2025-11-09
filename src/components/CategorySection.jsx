@@ -80,7 +80,7 @@ const CategorySection = () => {
             <h3 className="dark:text-white text-secondary text-xl font-semibold leading-tight">
               Pet Care Products
             </h3>
-            <p className="dark:text-white text-gray-700 text-sm font-normal leading-normal">
+            <p className="dark:text-gray-200 text-gray-700 text-sm font-normal leading-normal">
               Health and wellness products
             </p>
           </div>

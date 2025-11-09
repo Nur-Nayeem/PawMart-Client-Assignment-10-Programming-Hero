@@ -19,11 +19,11 @@ const Footer = () => {
             className="text-xl font-bold flex items-center gap-1.5"
           >
             <span className="text-2xl gradient-text">PawsMart</span>
-            <img src="./pawprint.png" alt="logo-icon" className="w-6 h-6" />
+            <img src="/pawprint.png" alt="logo-icon" className="w-6 h-6" />
           </Link>
           <p className="text-sm">
-            Our mission is to connect loving homes with pets in need and provide
-            the best supplies for their well-being.
+            PawMart connects local pet owners and buyers for adoption and pet
+            care products.
           </p>
         </div>
         <div>
@@ -53,9 +53,9 @@ const Footer = () => {
         <div>
           <h3 className="font-bold mb-4">Follow Us</h3>
           <div className="flex space-x-4">
-            <FaFacebook className="hover:text-primary transition-colors duration-200" />
-            <FaXTwitter className="hover:text-primary transition-colors duration-200" />
-            <FaInstagram className="hover:text-primary transition-colors duration-200" />
+            <FaFacebook className="hover:text-primary transition-colors duration-200 cursor-pointer" />
+            <FaXTwitter className="hover:text-primary transition-colors duration-200 cursor-pointer" />
+            <FaInstagram className="hover:text-primary transition-colors duration-200 cursor-pointer" />
           </div>
         </div>
       </div>

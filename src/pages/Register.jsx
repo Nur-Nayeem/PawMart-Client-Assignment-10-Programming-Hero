@@ -1,21 +1,23 @@
 import React, { use, useState } from "react";
-import { CiLock, CiMail } from "react-icons/ci";
+import { CiLink, CiLock, CiMail } from "react-icons/ci";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 import { ThemeContext } from "../contexts/ThemeContext";
+import { IoPersonOutline } from "react-icons/io5";
 
-const Login = () => {
+const Register = () => {
   const { theme } = use(ThemeContext);
   const [error, setError] = useState(false);
-  const [loadingLogin, setLoadingLogin] = useState(false);
+  const [loadingReg, setLoadingReg] = useState(false);
   const [eye, setEye] = useState(false);
-  const handleLogin = () => {};
+
+  const handleRegister = () => {};
 
   const handleGoogleSignIn = () => {};
   return (
-    <div className="py-16 my-container flex items-center justify-center">
-      <title>PawsMart - SignIn</title>
+    <div className="my-container flex items-center justify-center">
+      <title>PawsMart - SignUp</title>
       <div
         className={`w-full max-w-lg ${
           theme == "light" ? "glass-blur" : "glass-blur-dark"
@@ -27,10 +29,25 @@ const Login = () => {
             <img src="/pawprint.png" alt="logo-icon" className="w-6 h-6" />
           </h1>
           <p className="text-lg dark:text-white text-secondary mt-2">
-            Welcome back! Please login to your account.
+            Create Your Account
           </p>
         </div>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleRegister}>
+          <div className="mb-4">
+            <label className="block text-sm font-semibold mb-2 dark:text-white text-secondary">
+              Name
+            </label>
+            <div className="relative">
+              <IoPersonOutline className="absolute left-3 top-1/2 -translate-y-1/2" />
+              <input
+                className="w-full h-12 pl-10 pr-4 rounded-lg border-2 border-primary/50  bg-gray-200/10 focus:outline-none"
+                placeholder="Your name"
+                type="text"
+                name="name"
+                required
+              />
+            </div>
+          </div>
           <div className="mb-4">
             <label className="block text-sm font-semibold mb-2 dark:text-white text-secondary">
               Email
@@ -43,6 +60,20 @@ const Login = () => {
                 type="email"
                 name="email"
                 required
+              />
+            </div>
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-semibold mb-2 dark:text-white text-secondary">
+              Photo URL
+            </label>
+            <div className="relative">
+              <CiLink className="absolute left-3 top-1/2 -translate-y-1/2" />
+              <input
+                className="w-full h-12 pl-10 pr-4 rounded-lg border-2 border-primary/50  bg-gray-200/10 focus:outline-none"
+                placeholder="Enter your photo url"
+                type="text"
+                name="photourl"
               />
             </div>
           </div>
@@ -78,7 +109,7 @@ const Login = () => {
           </div>
           <p className="text-sm text-rose-500 mb-2.5">{error}</p>
           <button className="w-full flex items-center justify-center rounded-full py-3 px-6 btn-primary hover:bg-primary transition-all duration-300 transform hover:scale-105 text-white font-semibold  text-lg  leading-normal shadow-lg cursor-pointer">
-            {loadingLogin ? (
+            {loadingReg ? (
               <span className="loading loading-spinner loading-xl text-base-100"></span>
             ) : (
               <span>Login</span>
@@ -118,4 +149,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
