@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import PetsAndSupplies from "../pages/PetsAndSupplies";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import AddListing from "../pages/AddListing";
 
 export const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ export const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: "pets-and-supplies",
+        path: "pet-and-supplies",
         Component: PetsAndSupplies,
       },
       {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: "auth/register",
         Component: Register,
+      },
+      {
+        path: "add-linsting",
+        Component: AddListing,
       },
     ],
   },

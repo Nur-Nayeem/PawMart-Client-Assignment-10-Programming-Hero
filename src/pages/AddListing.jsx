@@ -36,7 +36,7 @@ const AddListing = () => {
                 defaultValue="Pick a text editor"
                 className="select select-primary w-full px-4 h-12  rounded-lg border-2 border-primary/50 bg-base-100/50  outline-none focus:outline-none"
               >
-                <option disabled={true}>Pick a text editor</option>
+                <option disabled={true}>Select a category</option>
                 <option>Pets</option>
                 <option>Food</option>
                 <option>Accessories</option>
