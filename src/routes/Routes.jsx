@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router";
 import MainLayout from "../Layoutes/MainLayout";
 import Home from "../pages/Home";
 import PetsAndSupplies from "../pages/PetsAndSupplies";
+import Login from "../pages/Login";
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
       {
         path: "pets-and-supplies",
         Component: PetsAndSupplies,
+      },
+      {
+        path: "auth/login",
+        Component: Login,
       },
     ],
   },
