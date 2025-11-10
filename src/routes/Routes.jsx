@@ -7,6 +7,7 @@ import Register from "../pages/Register";
 import AddListing from "../pages/AddListing";
 import DetailsPage from "../pages/DetailsPage";
 import OrderForm from "../pages/OrderForm";
+import MyListings from "../pages/MyListings";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
         Component: OrderForm,
       },
       {
+        path: "/my-listings",
+        Component: MyListings,
+      },
+      {
         path: "auth/login",
         Component: Login,
       },
@@ -37,7 +42,7 @@ export const router = createBrowserRouter([
         Component: Register,
       },
       {
-        path: "add-linsting",
+        path: "add-listing",
         Component: AddListing,
       },
     ],

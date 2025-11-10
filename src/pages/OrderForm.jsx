@@ -10,14 +10,14 @@ const OrderForm = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const [orderForm, setOrderForm] = useState({});
+  const [listing, setListing] = useState({});
   const axiosInstance = useAxios();
   const { user } = use(AuthContext);
 
   useEffect(() => {
     axiosInstance
       .get(`/pets-and-supplies/${id}`)
-      .then((data) => setOrderForm(data.data))
+      .then((data) => setListing(data.data))
       .catch((err) => console.log(err));
   }, [axiosInstance, id]);
 
@@ -30,11 +30,14 @@ const OrderForm = () => {
     const quantity = e.target.name.value;
     const orderFormObj = {
       productId: id,
-      productName: orderForm.name,
+      productName: listing.name,
+      category: listing.category,
       buyerName: user.displayName,
       email: user.email,
+      location: listing.location,
       quantity,
-      price: orderForm.price,
+      price: listing.price,
+      image: listing.image,
       address,
       phone,
       date,
@@ -89,7 +92,7 @@ const OrderForm = () => {
                 <img
                   alt="Golden Retriever Puppy"
                   className="w-full h-auto object-cover rounded-lg aspect-4/3"
-                  src={orderForm.image}
+                  src={listing.image}
                 />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -102,7 +105,7 @@ const OrderForm = () => {
                     placeholder="name of the pet or supplies"
                     type="text"
                     readOnly
-                    defaultValue={orderForm.name}
+                    defaultValue={listing.name}
                   />
                 </div>
                 <div className="flex flex-col">
@@ -113,7 +116,7 @@ const OrderForm = () => {
                     className="w-full h-12 p-4 rounded-lg border-2 border-primary/50 bg-base-100/50 focus:outline-none"
                     type="text"
                     readOnly
-                    defaultValue={orderForm._id}
+                    defaultValue={listing._id}
                   />
                 </div>
                 <div className="flex flex-col">
@@ -124,7 +127,7 @@ const OrderForm = () => {
                     className="w-full h-12 p-4 rounded-lg border-2 border-primary/50 bg-base-100/50 focus:outline-none"
                     type="text"
                     readOnly
-                    defaultValue={orderForm.price}
+                    defaultValue={listing.price}
                   />
                 </div>
                 <div className="flex flex-col sm:col-span-2">
@@ -133,7 +136,7 @@ const OrderForm = () => {
                   </label>
                   <input
                     className="w-full h-12 p-4 rounded-lg border-2 border-primary/50 bg-base-100/50 focus:outline-none"
-                    readOnly={orderForm.category === "Pets"}
+                    readOnly={listing.category === "Pets"}
                     type="number"
                     defaultValue={1}
                   />

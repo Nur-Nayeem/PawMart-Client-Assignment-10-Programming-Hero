@@ -19,9 +19,7 @@
 }
 
 .gradient-text {
-  background: linear-gradient(to right, #632ee3, #9f62f2);
-  -webkit-background-clip: text;
-  color: transparent;
+  @apply bg-linear-to-r from-[#632ee3] to-[#9f62f2] bg-clip-text text-transparent;
 }
 
 .btn-primary {

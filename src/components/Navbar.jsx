@@ -64,10 +64,16 @@ const Navbar = () => {
             </NavLink>
 
             <NavLink
-              to={"/add-linsting"}
+              to={"/add-listing"}
               className="hover:scale-105 hover:text-primary transition-all duration-300"
             >
               Add Listing
+            </NavLink>
+            <NavLink
+              to={"/my-listings"}
+              className="hover:scale-105 hover:text-primary transition-all duration-300"
+            >
+              My Listing
             </NavLink>
           </ul>
         </div>
@@ -93,10 +99,16 @@ const Navbar = () => {
           </NavLink>
 
           <NavLink
-            to={"/add-linsting"}
+            to={"/add-listing"}
             className="hover:scale-105 hover:text-primary transition-all duration-300"
           >
             Add Listing
+          </NavLink>
+          <NavLink
+            to={"/my-listings"}
+            className="hover:scale-105 hover:text-primary transition-all duration-300"
+          >
+            My Listing
           </NavLink>
         </ul>
       </div>
