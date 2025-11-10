@@ -1,8 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CiLocationOn, CiMail } from "react-icons/ci";
+import useAxios from "../hooks/useAxios";
+import { useParams } from "react-router";
 
 const DetailsPage = () => {
   const { theme } = useState();
+  const axiosInstance = useAxios();
+  const { id } = useParams();
+  const [details, setDetails] = useState({});
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/pets-and-supplies/${id}`)
+      .then((data) => setDetails(data.data))
+      .catch((err) => console.log(err));
+  }, [axiosInstance, id]);
+
   return (
     <main className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div
@@ -15,7 +28,8 @@ const DetailsPage = () => {
             <img
               alt="Golden Retriever Puppy looking at the camera"
               className="absolute inset-0 w-full h-full object-cover"
-              src="https://i.ibb.co.com/xt5f6BZb/max-puppy.png"
+              src={details.image}
+              // src="https://i.ibb.co.com/xt5f6BZb/max-puppy.png"
             />
             <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent md:bg-linear-to-r md:from-black/10"></div>
           </div>
@@ -28,32 +42,26 @@ const DetailsPage = () => {
               <div className="mt-2.5">
                 <span>Category:</span>
                 <span className="ml-2.5 bg-primary/20 text-primary font-semibold px-3 py-1 rounded-full whitespace-nowrap">
-                  Pets
+                  {details.category}
                 </span>
               </div>
             </div>
             <div className="text-4xl lg:text-5xl font-bold gradient-text text-glow">
-              ৳800
+              ৳{details.price}
             </div>
             <div className="space-y-3 pt-2">
               <h2 className="text-lg font-semibold dark:text-white text-secondary">
                 Description
               </h2>
-              <p className="text-sm leading-relaxed ">
-                Meet Max, an adorable 8-week-old Golden Retriever puppy with a
-                heart of gold. He is playful, affectionate, and loves to cuddle.
-                Max is up-to-date on all his vaccinations and is looking for a
-                loving forever home to grow up in. He gets along well with
-                children and other pets.
-              </p>
+              <p className="text-sm leading-relaxed ">{details.description}</p>
             </div>
             <div className="flex items-center gap-2 dark:text-gray-400 text-gray-700">
               <CiLocationOn className="text-lg" />
-              <span className="text-sm">Dhaka, BD</span>
+              <span className="text-sm">{details.location}</span>
             </div>
             <div className="flex items-center gap-2 dark:text-gray-400 text-gray-700">
               <CiMail className="text-lg" />
-              <span className="text-sm">nurnayem768@gmail.com</span>
+              <span className="text-sm">{details.email}</span>
             </div>
 
             <div className="pt-6">

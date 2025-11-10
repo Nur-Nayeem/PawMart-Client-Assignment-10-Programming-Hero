@@ -1,10 +1,11 @@
 import React, { use } from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { ThemeContext } from "../../Contexts/Contexts";
+import { Link } from "react-router";
 
 const ListingCard = ({ list }) => {
   const { theme } = use(ThemeContext);
-  const { name, category, price, location, image } = list;
+  const { _id, name, category, price, location, image } = list;
   const badges =
     (category == "Accessories" && "bg-[#ff9a85]/30 text-[#8b3f2f]") ||
     (category == "Pets" && "bg-[#8ad6c9] text-[#006251]") ||
@@ -35,9 +36,12 @@ const ListingCard = ({ list }) => {
           <CiLocationOn className="text-base mr-1" />
           <span>{location}</span>
         </div>
-        <button className="btn-primary py-2 px-4 rounded-full font-bold cursor-pointer shadow-glow hover:scale-101 transition-transform duration-300 dark:text-white text-base-100">
+        <Link
+          to={`/pet-and-supplies/${_id}`}
+          className="btn-primary py-2 px-4 text-center rounded-full font-bold cursor-pointer shadow-glow hover:scale-101 transition-transform duration-300 dark:text-white text-base-100"
+        >
           See Details
-        </button>
+        </Link>
       </div>
     </div>
   );
