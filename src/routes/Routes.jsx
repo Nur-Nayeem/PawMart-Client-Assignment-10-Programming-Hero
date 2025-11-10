@@ -9,6 +9,7 @@ import DetailsPage from "../pages/DetailsPage";
 import OrderForm from "../pages/OrderForm";
 import MyListings from "../pages/MyListings";
 import UpdateListing from "../pages/UpdateMyListing";
+import MyOrders from "../pages/MyOrders";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/my-listings",
         Component: MyListings,
+      },
+      {
+        path: "/my-orders",
+        Component: MyOrders,
       },
       {
         path: "/my-listings/update/:id",

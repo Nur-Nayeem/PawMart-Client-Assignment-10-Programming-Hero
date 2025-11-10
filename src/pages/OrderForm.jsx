@@ -16,7 +16,7 @@ const OrderForm = () => {
 
   useEffect(() => {
     axiosInstance
-      .get(`/pets-and-supplies/${id}`)
+      .get(`/listings/${id}`)
       .then((data) => setListing(data.data))
       .catch((err) => console.log(err));
   }, [axiosInstance, id]);
@@ -27,7 +27,7 @@ const OrderForm = () => {
     const phone = e.target.phone.value.trim();
     const date = e.target.date.value;
     const note = e.target.note.value.trim();
-    const quantity = e.target.name.value;
+    const quantity = e.target.quantity.value;
     const orderFormObj = {
       productId: id,
       productName: listing.name,
@@ -52,6 +52,7 @@ const OrderForm = () => {
             text: "Your Order is Successfully submitted",
             icon: "success",
           });
+          navigate("/my-orders");
           e.target.reset();
         }
       })
@@ -138,6 +139,7 @@ const OrderForm = () => {
                     className="w-full h-12 p-4 rounded-lg border-2 border-primary/50 bg-base-100/50 focus:outline-none"
                     readOnly={listing.category === "Pets"}
                     type="number"
+                    name="quantity"
                     defaultValue={1}
                   />
                 </div>

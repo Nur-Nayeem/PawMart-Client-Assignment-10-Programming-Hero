@@ -173,7 +173,7 @@ const UpdateListing = () => {
                 className="w-full h-12 p-4 rounded-lg border-2 border-primary/50  bg-base-100/50 focus:outline-none"
                 readOnly
                 type="email"
-                value={user?.email}
+                defaultValue={user?.email}
               />
             </div>
           </div>

@@ -75,6 +75,12 @@ const Navbar = () => {
             >
               My Listing
             </NavLink>
+            <NavLink
+              to={"/my-orders"}
+              className="hover:scale-105 hover:text-primary transition-all duration-300"
+            >
+              My Orders
+            </NavLink>
           </ul>
         </div>
         <Link to={"/"} className="text-xl font-bold flex items-center gap-1.5">
@@ -109,6 +115,12 @@ const Navbar = () => {
             className="hover:scale-105 hover:text-primary transition-all duration-300"
           >
             My Listing
+          </NavLink>
+          <NavLink
+            to={"/my-orders"}
+            className="hover:scale-105 hover:text-primary transition-all duration-300"
+          >
+            My Orders
           </NavLink>
         </ul>
       </div>
