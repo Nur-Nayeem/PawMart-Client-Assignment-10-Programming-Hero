@@ -11,7 +11,7 @@ const DetailsPage = () => {
 
   useEffect(() => {
     axiosInstance
-      .get(`/pets-and-supplies/${id}`)
+      .get(`/listings/${id}`)
       .then((data) => setDetails(data.data))
       .catch((err) => console.log(err));
   }, [axiosInstance, id]);
@@ -26,7 +26,7 @@ const DetailsPage = () => {
             <img
               alt={details.name}
               className="absolute inset-0 w-full h-full object-cover"
-              src={details.image}
+              src={details.image || "/fallback.png"}
             />
             <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent md:bg-linear-to-r md:from-black/10"></div>
           </div>

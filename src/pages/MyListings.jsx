@@ -7,6 +7,7 @@ const MyListings = () => {
   const [myListings, setMyListings] = useState([]);
   const axiosInstance = useAxios();
   const { user } = use(AuthContext);
+  const [refetch, setRefetch] = useState(false);
   useEffect(() => {
     axiosInstance
       .get(`/my-listings?email=${user?.email}`)
@@ -16,7 +17,7 @@ const MyListings = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [axiosInstance, user?.email]);
+  }, [axiosInstance, user?.email, refetch]);
   console.log(myListings);
 
   return (
@@ -62,7 +63,12 @@ const MyListings = () => {
             </thead>
             <tbody>
               {myListings.map((row, index) => (
-                <MylistingTableDataRow key={index} row={row} />
+                <MylistingTableDataRow
+                  key={index}
+                  row={row}
+                  setRefetch={setRefetch}
+                  refetch={refetch}
+                />
               ))}
             </tbody>
           </table>

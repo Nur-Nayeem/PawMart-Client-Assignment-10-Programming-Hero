@@ -44,7 +44,7 @@ const OrderForm = () => {
       note,
     };
     axiosInstance
-      .post("/order-pet-or-supplies", orderFormObj)
+      .post("/order", orderFormObj)
       .then((data) => {
         if (data.data.acknowledged) {
           Swal.fire({
@@ -92,7 +92,7 @@ const OrderForm = () => {
                 <img
                   alt="Golden Retriever Puppy"
                   className="w-full h-auto object-cover rounded-lg aspect-4/3"
-                  src={listing.image}
+                  src={listing.image || "/fallback.png"}
                 />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

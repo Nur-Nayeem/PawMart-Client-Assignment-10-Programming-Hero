@@ -7,7 +7,7 @@ import OurHeros from "../components/OurHerosSection/OurHeros";
 import axios from "axios";
 import Loading from "../components/Loading";
 const recentListingPromise = axios
-  .get("http://localhost:4000/recent-pets-and-supplies")
+  .get("http://localhost:4000/recent-listings")
   .then((data) => data.data);
 
 const Home = () => {

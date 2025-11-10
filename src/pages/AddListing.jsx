@@ -2,11 +2,13 @@ import React, { use, useState } from "react";
 import { AuthContext, ThemeContext } from "../Contexts/Contexts";
 import useAxios from "../hooks/useAxios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
 const AddListing = () => {
   const { user } = use(AuthContext);
   const { theme } = use(ThemeContext);
   const axiosInstance = useAxios();
+  const navigate = useNavigate();
   const [category, setCategory] = useState("");
   const handleAddListing = (e) => {
     e.preventDefault();
@@ -38,6 +40,7 @@ const AddListing = () => {
             title: "Successfully added listing",
             icon: "success",
           });
+          navigate("/my-listings");
           e.target.reset();
         }
       })

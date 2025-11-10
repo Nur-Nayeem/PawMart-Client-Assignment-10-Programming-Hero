@@ -2,11 +2,12 @@ import React, { use, useEffect, useState } from "react";
 import { AuthContext, ThemeContext } from "../Contexts/Contexts";
 import useAxios from "../hooks/useAxios";
 import Swal from "sweetalert2";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const UpdateListing = () => {
   const { user } = use(AuthContext);
   const { theme } = use(ThemeContext);
+  const navigate = useNavigate();
   const { id } = useParams();
   const axiosInstance = useAxios();
   const [category, setCategory] = useState("");
@@ -14,7 +15,7 @@ const UpdateListing = () => {
 
   useEffect(() => {
     axiosInstance
-      .get(`pets-and-supplies/${id}`)
+      .get(`listings/${id}`)
       .then((data) => {
         setListing(data.data);
         setCategory(listing.category);
@@ -44,12 +45,13 @@ const UpdateListing = () => {
       description,
     };
     axiosInstance
-      .patch(`/pets-and-supplies/${id}`, updatelistingObject)
+      .patch(`/update-listing/${id}`, updatelistingObject)
       .then(() => {
         Swal.fire({
           title: "Successfully updated listing",
           icon: "success",
         });
+        navigate("/my-listings");
         e.target.reset();
       })
       .catch((err) => {

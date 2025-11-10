@@ -7,9 +7,7 @@ const PetsAndSupplies = () => {
   const axiosInstance = useAxios();
   const [listings, setListings] = useState([]);
   useEffect(() => {
-    axiosInstance
-      .get("/pets-and-supplies")
-      .then((data) => setListings(data.data));
+    axiosInstance.get("/listings").then((data) => setListings(data.data));
   }, [axiosInstance]);
   return (
     <div>

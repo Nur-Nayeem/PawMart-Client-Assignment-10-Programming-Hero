@@ -1,9 +1,43 @@
 import React from "react";
 import { MdDeleteOutline, MdModeEditOutline } from "react-icons/md";
 import { useNavigate } from "react-router";
+import useAxios from "../hooks/useAxios";
+import Swal from "sweetalert2";
 
-const MylistingTableDataRow = ({ row }) => {
+const MylistingTableDataRow = ({ row, setRefetch, refetch }) => {
   const navigate = useNavigate();
+  const axiosInstance = useAxios();
+  const handleDeleteListing = () => {
+    axiosInstance
+      .delete(`/listings/${row._id}`)
+      .then(() => {
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+            setRefetch(!refetch);
+          }
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err,
+        });
+      });
+  };
   return (
     <>
       <tr className="bg-white/30 dark:bg-white/5 border-b backdrop-blur-md ">
@@ -13,7 +47,7 @@ const MylistingTableDataRow = ({ row }) => {
         <td className="p-4 font-medium">
           <div className="avatar">
             <div className="mask mask-squircle h-12 w-12">
-              <img src={row.image || "jhghgh"} alt={row.name} />
+              <img src={row.image || "/fallback.png"} alt={row.name} />
             </div>
           </div>
         </td>
@@ -31,7 +65,10 @@ const MylistingTableDataRow = ({ row }) => {
             >
               <MdModeEditOutline className="text-2xl" />
             </button>
-            <button className="dark:text-white/60 hover:text-red-500 transition-colors cursor-pointer">
+            <button
+              onClick={handleDeleteListing}
+              className="dark:text-white/60 hover:text-red-500 transition-colors cursor-pointer"
+            >
               <MdDeleteOutline className="text-2xl" />
             </button>
           </div>
