@@ -63,10 +63,10 @@ const DetailsPage = () => {
 
             <div className="pt-6">
               <button
-                onClick={() => navigate(`/pet-and-supplies/${id}/order`)}
+                onClick={() => navigate(`/pet-and-supplies/order/${id}`)}
                 className="w-full btn-primary shadow-glow hover:scale-105 transition-transform duration-300 text-white py-3 px-4 rounded-full font-bold cursor-pointer "
               >
-                Adopt Now
+                {details.category === "Pets" ? "Adopt Now" : "Order Now"}
               </button>
             </div>
           </div>

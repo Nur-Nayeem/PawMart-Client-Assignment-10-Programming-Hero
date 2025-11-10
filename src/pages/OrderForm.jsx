@@ -3,12 +3,12 @@ import { CgClose } from "react-icons/cg";
 import { useNavigate, useParams } from "react-router";
 import { AuthContext, ThemeContext } from "../Contexts/Contexts";
 import useAxios from "../hooks/useAxios";
+import Swal from "sweetalert2";
 
 const OrderForm = () => {
   const { theme } = use(ThemeContext);
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log(id);
 
   const [orderForm, setOrderForm] = useState({});
   const axiosInstance = useAxios();
@@ -21,6 +21,46 @@ const OrderForm = () => {
       .catch((err) => console.log(err));
   }, [axiosInstance, id]);
 
+  const onOrderFormSubmit = (e) => {
+    e.preventDefault();
+    const address = e.target.address.value.trim();
+    const phone = e.target.phone.value.trim();
+    const date = e.target.date.value;
+    const note = e.target.note.value.trim();
+    const quantity = e.target.name.value;
+    const orderFormObj = {
+      productId: id,
+      productName: orderForm.name,
+      buyerName: user.displayName,
+      email: user.email,
+      quantity,
+      price: orderForm.price,
+      address,
+      phone,
+      date,
+      note,
+    };
+    axiosInstance
+      .post("/order-pet-or-supplies", orderFormObj)
+      .then((data) => {
+        if (data.data.acknowledged) {
+          Swal.fire({
+            title: "Submitted!",
+            text: "Your Order is Successfully submitted",
+            icon: "success",
+          });
+          e.target.reset();
+        }
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err,
+        });
+      });
+  };
+
   return (
     <section className="flex justify-center">
       <div
@@ -28,7 +68,7 @@ const OrderForm = () => {
           theme == "light" ? "glass-blur" : "glass-blur-dark"
         }`}
       >
-        <div className="relative p-6 sm:p-8">
+        <form onSubmit={onOrderFormSubmit} className="relative p-6 sm:p-8">
           <button
             className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors"
             type="button"
@@ -133,6 +173,8 @@ const OrderForm = () => {
                   <input
                     className="w-full h-12 p-4 rounded-lg border-2 border-primary/50 bg-base-100/50 focus:outline-none"
                     placeholder="Enter your full address"
+                    name="address"
+                    required
                   />
                 </div>
                 <div className="flex flex-col">
@@ -141,8 +183,10 @@ const OrderForm = () => {
                   </label>
                   <input
                     className="w-full h-12 p-4 rounded-lg border-2 border-primary/50 bg-base-100/50 focus:outline-none"
-                    placeholder="(123) 456-7890"
+                    placeholder="(+880) 1456-7890"
                     type="tel"
+                    name="phone"
+                    required
                   />
                 </div>
                 <div>
@@ -153,6 +197,7 @@ const OrderForm = () => {
                     className="w-full h-12 p-4 rounded-lg border-2 border-primary/50  bg-base-100/50 focus:outline-none"
                     type="date"
                     name="date"
+                    required
                   />
                 </div>
                 <div className="flex flex-col">
@@ -163,6 +208,7 @@ const OrderForm = () => {
                     className="w-full h-12 p-4 rounded-lg border-2 border-primary/50  bg-base-100/50 focus:outline-none min-h-[100px]"
                     placeholder="Any special instructions or questions?"
                     rows="3"
+                    name="note"
                   ></textarea>
                 </div>
               </div>
@@ -173,7 +219,7 @@ const OrderForm = () => {
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </section>
   );

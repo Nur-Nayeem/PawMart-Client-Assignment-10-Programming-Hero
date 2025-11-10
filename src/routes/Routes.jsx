@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
         Component: DetailsPage,
       },
       {
-        path: "pet-and-supplies/:id/order",
+        path: "pet-and-supplies/order/:id",
         Component: OrderForm,
       },
       {
