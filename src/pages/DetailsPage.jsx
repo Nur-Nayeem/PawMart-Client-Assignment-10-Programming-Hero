@@ -19,6 +19,7 @@ const DetailsPage = () => {
 
   return (
     <main className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <title>{details.name}</title>
       <div
         className={`w-full max-w-5xl mx-auto rounded-xl shadow-2xl shadow-black/50 overflow-hidden relative`}
       >

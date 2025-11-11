@@ -66,6 +66,7 @@ const UpdateListing = () => {
 
   return (
     <main className="flex-1 flex items-center justify-center">
+      <title>PawsMart - Update Listing</title>
       <div
         className={`w-full max-w-4xl ${
           theme == "light" ? "glass-blur" : "glass-blur-dark"

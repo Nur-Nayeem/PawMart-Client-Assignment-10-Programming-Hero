@@ -76,6 +76,7 @@ const MyOrders = () => {
 
   return (
     <section className="mt-12 grow">
+      <title>My Orders</title>
       <div className="flex flex-col gap-8">
         <div className="flex justify-between items-center">
           <h1 className="text-3xl md:text-4xl font-bold text-secondary dark:text-white">

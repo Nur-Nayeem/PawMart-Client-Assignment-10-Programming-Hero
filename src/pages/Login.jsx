@@ -83,7 +83,7 @@ const Login = () => {
 
   return (
     <div className="py-16 my-container flex items-center justify-center">
-      <title>PawsMart - SignIn</title>
+      <title>PawsMart - LogIn</title>
       <div
         className={`w-full max-w-lg ${
           theme == "light" ? "glass-blur" : "glass-blur-dark"

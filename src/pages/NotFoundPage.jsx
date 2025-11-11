@@ -10,6 +10,7 @@ const NotFoundPage = () => {
         theme == "light" ? "gradient-bg" : "gradient-bg-dark"
       }`}
     >
+      <title>Error-404</title>
       <div className="relative w-full max-w-2xl text-center">
         <div
           className={`relative ${

@@ -67,6 +67,7 @@ const OrderForm = () => {
 
   return (
     <section className="flex justify-center">
+      <title>{listing.name}</title>
       <div
         className={`w-full max-w-4xl rounded-xl ${
           theme == "light" ? "glass-blur" : "glass-blur-dark"

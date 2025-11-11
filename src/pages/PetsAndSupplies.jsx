@@ -84,6 +84,7 @@ const PetsAndSupplies = () => {
       />
 
       <div>
+        <title>{"Pets and Supplies " + category}</title>
         <div className="text-center">
           <h2 className="text-3xl sm:text-5xl font-bold text-center m-5">
             Brows Pets & Supplies

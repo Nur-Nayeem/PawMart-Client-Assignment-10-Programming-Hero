@@ -100,7 +100,7 @@ const Register = () => {
   };
   return (
     <div className="my-container flex items-center justify-center">
-      <title>PawsMart - SignUp</title>
+      <title>PawsMart - Register</title>
       <div
         className={`w-full max-w-lg ${
           theme == "light" ? "glass-blur" : "glass-blur-dark"
