@@ -8,12 +8,12 @@ const MainLayout = () => {
   const { theme } = use(ThemeContext);
   return (
     <div className={theme == "light" ? "gradient-bg" : "gradient-bg-dark"}>
-      <header className="fixed top-2 w-full z-50">
-        <nav className="container mx-auto">
+      <header className="fixed top-0 w-full z-50">
+        <nav>
           <Navbar />
         </nav>
       </header>
-      <main className="container mx-auto pt-30 px-2.5 sm:px-0">
+      <main className="container mx-auto pt-30 px-2.5 sm:px-0 min-h-[calc(100vh-311px)]">
         <Outlet />
       </main>
       <footer>
