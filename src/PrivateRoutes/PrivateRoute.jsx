@@ -4,8 +4,8 @@ import Loading from "../components/Loading";
 import { AuthContext } from "../Contexts/Contexts";
 
 const PrivateRoute = ({ children }) => {
-  const { user, loading } = use(AuthContext);
-  if (loading) {
+  const { user, authLoading } = use(AuthContext);
+  if (authLoading) {
     return <Loading />;
   } else if (user) {
     return children;
