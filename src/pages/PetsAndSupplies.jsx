@@ -48,8 +48,12 @@ const PetsAndSupplies = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     setLoading(true);
+    let url = "/listings";
+    if (search) {
+      url = `/search-listings?search=${search}`;
+    }
     axiosInstance
-      .get(`/search-listings?search=${search}`)
+      .get(url)
       .then((data) => {
         setListings(data.data);
         setLoading(false);
@@ -94,7 +98,6 @@ const PetsAndSupplies = () => {
             </svg>
             <input
               type="search"
-              required
               placeholder="Search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}

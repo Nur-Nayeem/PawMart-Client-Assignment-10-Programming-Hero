@@ -1,11 +1,7 @@
 import React, { use, useEffect } from "react";
 import { IoLogOut, IoMenu } from "react-icons/io5";
 import { Link, NavLink } from "react-router";
-import {
-  AuthContext,
-  CetegoryContext,
-  ThemeContext,
-} from "../Contexts/Contexts";
+import { AuthContext, ThemeContext } from "../Contexts/Contexts";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
