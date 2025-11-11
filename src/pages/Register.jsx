@@ -181,14 +181,6 @@ const Register = () => {
                 {eye ? <FaRegEye /> : <FaRegEyeSlash />}
               </span>
             </div>
-            <div className="text-right mt-2">
-              <Link
-                to=""
-                className="text-sm dark:text-white text-secondary hover:underline"
-              >
-                Forgot Password?
-              </Link>
-            </div>
           </div>
           <p className="text-sm text-rose-500 mb-2.5">{error}</p>
           <button className="w-full flex items-center justify-center rounded-full py-3 px-6 btn-primary hover:bg-primary transition-all duration-300 transform hover:scale-105 text-white font-semibold  text-lg  leading-normal shadow-lg cursor-pointer">
@@ -218,12 +210,12 @@ const Register = () => {
 
         <div className="mt-4 text-center">
           <p className="dark:text-white text-secondary">
-            Don't have an account?
+            Already have an Account?
             <Link
-              to="/auth/sign-up"
+              to="/auth/login"
               className="ml-1.5 font-medium gradient-text hover:underline"
             >
-              Register here
+              Login Here
             </Link>
           </p>
         </div>
