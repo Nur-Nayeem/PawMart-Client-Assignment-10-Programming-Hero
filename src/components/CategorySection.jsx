@@ -1,11 +1,13 @@
 import React, { use } from "react";
 import { MdOutlineHealthAndSafety, MdOutlineToys } from "react-icons/md";
 import { PiBowlFood, PiDog } from "react-icons/pi";
-import { Link } from "react-router";
-import { ThemeContext } from "../Contexts/Contexts";
+import { Link, useNavigate } from "react-router";
+import { CetegoryContext, ThemeContext } from "../Contexts/Contexts";
 
 const CategorySection = () => {
   const { theme } = use(ThemeContext);
+  const { setCategory } = use(CetegoryContext);
+  const navigate = useNavigate();
   return (
     <div className="my-10">
       <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
@@ -13,8 +15,11 @@ const CategorySection = () => {
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-4 px-2.5">
-        <Link
-          to={"/pets-and-supplies"}
+        <button
+          onClick={() => {
+            setCategory("Pets");
+            navigate("/category-filtered-product/Pets");
+          }}
           className={`flex flex-1 gap-3 rounded-xl  ${
             theme == "light" ? "glass-blur" : "glass-blur-dark"
           } p-5 flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
@@ -30,9 +35,12 @@ const CategorySection = () => {
               Find dogs, cats, and more
             </p>
           </div>
-        </Link>
-        <Link
-          to={"/pets-and-supplies"}
+        </button>
+        <button
+          onClick={() => {
+            setCategory("Pet Food");
+            navigate("/category-filtered-product/Pet Food");
+          }}
           className={`flex flex-1 gap-3 rounded-xl ${
             theme == "light" ? "glass-blur" : "glass-blur-dark"
           } p-5 flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
@@ -48,9 +56,12 @@ const CategorySection = () => {
               Nutritious meals and treats
             </p>
           </div>
-        </Link>
-        <Link
-          to={"/pets-and-supplies"}
+        </button>
+        <button
+          onClick={() => {
+            setCategory("Accessories");
+            navigate("/category-filtered-product/Accessories");
+          }}
           className={`flex flex-1 gap-3 rounded-xl  ${
             theme == "light" ? "glass-blur" : "glass-blur-dark"
           } p-5 flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
@@ -66,9 +77,12 @@ const CategorySection = () => {
               Toys, leashes, and beds
             </p>
           </div>
-        </Link>
-        <Link
-          to={"/pets-and-supplies"}
+        </button>
+        <button
+          onClick={() => {
+            setCategory("Pet Care Products");
+            navigate("/category-filtered-product/Pet Care Products");
+          }}
           className={`flex flex-1 gap-3 rounded-xl  ${
             theme == "light" ? "glass-blur" : "glass-blur-dark"
           } p-5 flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
@@ -84,7 +98,7 @@ const CategorySection = () => {
               Health and wellness products
             </p>
           </div>
-        </Link>
+        </button>
       </div>
     </div>
   );

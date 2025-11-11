@@ -1,7 +1,11 @@
 import React, { use, useEffect } from "react";
 import { IoLogOut, IoMenu } from "react-icons/io5";
 import { Link, NavLink } from "react-router";
-import { AuthContext, ThemeContext } from "../Contexts/Contexts";
+import {
+  AuthContext,
+  CetegoryContext,
+  ThemeContext,
+} from "../Contexts/Contexts";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
@@ -57,7 +61,7 @@ const Navbar = () => {
             </NavLink>
 
             <NavLink
-              to={"/pet-and-supplies"}
+              to={"/category-filtered-product"}
               className="hover:scale-105 hover:text-primary transition-all duration-300"
             >
               Pets & Supplies
@@ -98,7 +102,7 @@ const Navbar = () => {
           </NavLink>
 
           <NavLink
-            to={"/pet-and-supplies"}
+            to={"/category-filtered-product"}
             className="hover:scale-105 hover:text-primary transition-all duration-300"
           >
             Pets & Supplies

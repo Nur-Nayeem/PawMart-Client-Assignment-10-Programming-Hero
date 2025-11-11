@@ -1,20 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import ListingCard from "../components/Listings/ListingCard";
 import useAxios from "../hooks/useAxios";
 import Loading from "../components/Loading";
+import { CetegoryContext } from "../Contexts/Contexts";
+import { useNavigate, useParams } from "react-router";
 
 const PetsAndSupplies = () => {
   const axiosInstance = useAxios();
+  const { category, setCategory } = use(CetegoryContext);
   const [listings, setListings] = useState([]);
-  const [category, setCategory] = useState("Select a category");
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
+  const { categoryName } = useParams();
+  const navigate = useNavigate();
+
   useEffect(() => {
+    console.log("call");
+
+    setCategory("All");
     setLoading(true);
+    let url = "/listings";
+    if (categoryName && categoryName !== "All") {
+      url = `/listings?category=${categoryName}`;
+    }
     axiosInstance
-      .get(
-        `/listings?category=${category == "Select a category" ? "" : category}`
-      )
+      .get(url)
       .then((data) => {
         setListings(data.data);
         setLoading(false);
@@ -23,7 +33,17 @@ const PetsAndSupplies = () => {
         console.log(err);
         setLoading(false);
       });
-  }, [axiosInstance, category]);
+  }, [axiosInstance, categoryName, setCategory]);
+
+  const handleCategoryChange = (e) => {
+    const selected = e.target.value;
+    setCategory(selected);
+    if (selected === "All") {
+      navigate("/category-filtered-product");
+    } else {
+      navigate(`/category-filtered-product/${selected}`);
+    }
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -89,9 +109,9 @@ const PetsAndSupplies = () => {
           <select
             defaultValue={category}
             className="select select-primary w-full px-4 h-12  rounded-full border-2 border-primary/50 bg-base-100/50  outline-none focus:outline-none"
-            onChange={(e) => setCategory(e.target.value)}
+            onChange={handleCategoryChange}
           >
-            <option disabled={true}>Select a category</option>
+            <option>All</option>
             <option>Pets</option>
             <option>Pet Food</option>
             <option>Accessories</option>

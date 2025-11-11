@@ -20,7 +20,11 @@ export const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: "pet-and-supplies",
+        path: "category-filtered-product",
+        Component: PetsAndSupplies,
+      },
+      {
+        path: "category-filtered-product/:categoryName",
         Component: PetsAndSupplies,
       },
       {
