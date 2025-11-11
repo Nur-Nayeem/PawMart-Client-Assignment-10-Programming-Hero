@@ -66,25 +66,28 @@ const Navbar = () => {
             >
               Pets & Supplies
             </NavLink>
-
-            <NavLink
-              to={"/add-listing"}
-              className="hover:scale-105 hover:text-primary transition-all duration-300"
-            >
-              Add Listing
-            </NavLink>
-            <NavLink
-              to={"/my-listings"}
-              className="hover:scale-105 hover:text-primary transition-all duration-300"
-            >
-              My Listing
-            </NavLink>
-            <NavLink
-              to={"/my-orders"}
-              className="hover:scale-105 hover:text-primary transition-all duration-300"
-            >
-              My Orders
-            </NavLink>
+            {user && (
+              <>
+                <NavLink
+                  to={"/add-listing"}
+                  className="hover:scale-105 hover:text-primary transition-all duration-300"
+                >
+                  Add Listing
+                </NavLink>
+                <NavLink
+                  to={"/my-listings"}
+                  className="hover:scale-105 hover:text-primary transition-all duration-300"
+                >
+                  My Listing
+                </NavLink>
+                <NavLink
+                  to={"/my-orders"}
+                  className="hover:scale-105 hover:text-primary transition-all duration-300"
+                >
+                  My Orders
+                </NavLink>
+              </>
+            )}
           </ul>
         </div>
         <Link to={"/"} className="text-xl font-bold flex items-center gap-1.5">
@@ -107,25 +110,28 @@ const Navbar = () => {
           >
             Pets & Supplies
           </NavLink>
-
-          <NavLink
-            to={"/add-listing"}
-            className="hover:scale-105 hover:text-primary transition-all duration-300"
-          >
-            Add Listing
-          </NavLink>
-          <NavLink
-            to={"/my-listings"}
-            className="hover:scale-105 hover:text-primary transition-all duration-300"
-          >
-            My Listing
-          </NavLink>
-          <NavLink
-            to={"/my-orders"}
-            className="hover:scale-105 hover:text-primary transition-all duration-300"
-          >
-            My Orders
-          </NavLink>
+          {user && (
+            <>
+              <NavLink
+                to={"/add-listing"}
+                className="hover:scale-105 hover:text-primary transition-all duration-300"
+              >
+                Add Listing
+              </NavLink>
+              <NavLink
+                to={"/my-listings"}
+                className="hover:scale-105 hover:text-primary transition-all duration-300"
+              >
+                My Listing
+              </NavLink>
+              <NavLink
+                to={"/my-orders"}
+                className="hover:scale-105 hover:text-primary transition-all duration-300"
+              >
+                My Orders
+              </NavLink>
+            </>
+          )}
         </ul>
       </div>
       <div className="flex items-center gap-2.5">

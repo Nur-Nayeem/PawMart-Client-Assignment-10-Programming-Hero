@@ -37,7 +37,7 @@ const ListingCard = ({ list }) => {
           </span>
         </div>
         <p className="dark:text-white text-secondary text-lg font-bold">
-          ৳{price}
+          {price == 0 ? "Free for Adoption" : `৳ ${price}`}
         </p>
         <div className="flex items-center dark:text-gray-100 text-gray-600 text-sm">
           <CiLocationOn className="text-base mr-1" />

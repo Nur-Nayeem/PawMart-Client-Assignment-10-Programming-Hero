@@ -10,6 +10,7 @@ import OrderForm from "../pages/OrderForm";
 import MyListings from "../pages/MyListings";
 import UpdateListing from "../pages/UpdateMyListing";
 import MyOrders from "../pages/MyOrders";
+import PrivateRoute from "../PrivateRoutes/PrivateRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -29,23 +30,51 @@ export const router = createBrowserRouter([
       },
       {
         path: "pet-and-supplies/:id",
-        Component: DetailsPage,
+        element: (
+          <PrivateRoute>
+            <DetailsPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "add-listing",
+        element: (
+          <PrivateRoute>
+            <AddListing />
+          </PrivateRoute>
+        ),
       },
       {
         path: "pet-and-supplies/order/:id",
-        Component: OrderForm,
+        element: (
+          <PrivateRoute>
+            <OrderForm />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-listings",
-        Component: MyListings,
+        element: (
+          <PrivateRoute>
+            <MyListings />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-orders",
-        Component: MyOrders,
+        element: (
+          <PrivateRoute>
+            <MyOrders />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-listings/update/:id",
-        Component: UpdateListing,
+        element: (
+          <PrivateRoute>
+            <UpdateListing />
+          </PrivateRoute>
+        ),
       },
       {
         path: "auth/login",
@@ -54,10 +83,6 @@ export const router = createBrowserRouter([
       {
         path: "auth/register",
         Component: Register,
-      },
-      {
-        path: "add-listing",
-        Component: AddListing,
       },
     ],
   },

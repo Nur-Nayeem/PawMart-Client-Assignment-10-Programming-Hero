@@ -47,7 +47,7 @@ const DetailsPage = () => {
               </div>
             </div>
             <div className="text-4xl lg:text-5xl font-bold gradient-text text-glow">
-              ৳{details.price}
+              ৳ {details.price}
             </div>
             <div className="space-y-3 pt-2">
               <h2 className="text-lg font-semibold dark:text-white text-secondary">
