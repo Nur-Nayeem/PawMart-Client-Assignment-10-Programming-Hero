@@ -18,13 +18,13 @@ const DetailsPage = () => {
   }, [axiosInstance, id]);
 
   return (
-    <main className="flex-1 flex items-center justify-center px-2.5 sm:px-0 ">
+    <main className="flex-1 flex items-center justify-center py-20 px-2.5 sm:px-0 ">
       <title>{details.name}</title>
       <div
         className={`w-full max-w-5xl mx-auto rounded-xl shadow-2xl shadow-black/50 overflow-hidden relative`}
       >
         <button
-          className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors"
+          className="z-50 absolute top-4 right-4 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors"
           type="button"
         >
           <CgClose

@@ -59,7 +59,7 @@ const AddListing = () => {
   };
 
   return (
-    <main className="flex-1 flex items-center justify-center px-2.5 sm:px-0 ">
+    <main className="flex-1 flex items-center justify-center mt-12 px-2.5 sm:px-0 ">
       <title>Add new Listing</title>
       <div
         className={`w-full max-w-4xl ${

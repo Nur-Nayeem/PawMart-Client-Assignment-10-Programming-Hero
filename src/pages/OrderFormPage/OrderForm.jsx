@@ -74,7 +74,7 @@ const OrderForm = () => {
   };
 
   return (
-    <section className="flex justify-center container mx-auto px-2.5 sm:px-0 ">
+    <section className="flex justify-center container mx-auto mt-12 px-2.5 sm:px-0 ">
       <title>{listing.name}</title>
       <div
         className={`w-full max-w-4xl rounded-xl ${
