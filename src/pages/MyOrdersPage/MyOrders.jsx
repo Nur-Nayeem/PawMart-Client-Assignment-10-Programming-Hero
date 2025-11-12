@@ -67,7 +67,7 @@ const MyOrders = () => {
     });
     doc.save("MyOrdersReport.pdf");
     Swal.fire({
-      title: "Drag me!",
+      title: "Report Downloaded!",
       icon: "success",
       draggable: true,
     });
