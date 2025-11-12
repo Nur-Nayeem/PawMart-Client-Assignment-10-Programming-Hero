@@ -25,13 +25,10 @@ export default function HeroSlider() {
         }}
         navigation={false}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper h-[650px] rounded-2xl"
+        className="mySwiper h-[650px]"
       >
         {SliderData.map((slide, index) => (
-          <SwiperSlide
-            key={index}
-            className="relative rounded-2xl overflow-hidden"
-          >
+          <SwiperSlide key={index} className="relative overflow-hidden">
             <div className="absolute h-full w-full bg-black/30 flex flex-col items-center justify-center text-white">
               <HeroContent slide={slide} />
             </div>

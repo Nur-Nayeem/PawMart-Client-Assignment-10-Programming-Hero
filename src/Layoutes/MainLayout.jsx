@@ -13,7 +13,7 @@ const MainLayout = () => {
           <Navbar />
         </nav>
       </header>
-      <main className="container mx-auto pt-30 px-2.5 sm:px-0 min-h-[calc(100vh-311px)]">
+      <main className="pt-20 px-2.5 sm:px-0 min-h-[calc(100vh-311px)]">
         <Outlet />
       </main>
       <footer>

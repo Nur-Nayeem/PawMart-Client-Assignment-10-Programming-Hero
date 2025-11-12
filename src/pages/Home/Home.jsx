@@ -26,10 +26,12 @@ const Home = () => {
       />
       <div>
         <HeroSlider />
-        <CategorySection />
-        <RecentListing />
-        <WhyAdopt />
-        <OurHeros />
+        <div className="container mx-auto ">
+          <CategorySection />
+          <RecentListing />
+          <WhyAdopt />
+          <OurHeros />
+        </div>
       </div>
     </>
   );
