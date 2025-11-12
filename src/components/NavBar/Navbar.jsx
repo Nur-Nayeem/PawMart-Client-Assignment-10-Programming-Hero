@@ -31,17 +31,13 @@ const Navbar = () => {
     <div className={`${theme == "light" ? "glass-blur" : "glass-blur-dark"} `}>
       <div className="rounded-2xl flex justify-between items-center py-4 px-2.5 md:px-0 container mx-auto  ">
         <div className="flex justify-center items-center gap-2">
-          <div className="dropdown lg:hidden">
-            <div
-              tabIndex={0}
-              role="button"
-              className="lg:hidden cursor-pointer"
-            >
-              <IoMenu className="h-6 w-6" />
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="lg:hidden">
+              <IoMenu className="h-6 w-6 cursor-pointer text-primary" />
             </div>
             <ul
               tabIndex="-1"
-              className={`dropdown-content flex flex-col gap-2.5 ${
+              className={`menu menu-sm dropdown-content ${
                 theme == "light" ? "gradient-bg" : "gradient-bg-dark"
               } rounded-box z-10 mt-7 w-52 p-4 shadow cursor-pointer`}
             >
