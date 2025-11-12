@@ -58,7 +58,7 @@ const DetailsPage = () => {
               <div className="flex flex-col p-8 md:p-10 lg:p-12 space-y-6">
                 <div className="space-y-2">
                   <h1 className="text-3xl lg:text-4xl font-bold tracking-tight dark:text-white text-secondary">
-                    Golden Retriever Puppy
+                    {details.name}
                   </h1>
 
                   <div className="mt-2.5">
