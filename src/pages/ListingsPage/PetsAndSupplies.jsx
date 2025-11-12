@@ -81,7 +81,7 @@ const PetsAndSupplies = () => {
         }}
       />
 
-      <div>
+      <div className="px-2.5 sm:px-0 ">
         <title>
           {"Pets and Supplies " +
             (categoryName == undefined ? "All" : categoryName)}

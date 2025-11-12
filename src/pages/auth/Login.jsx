@@ -82,7 +82,7 @@ const Login = () => {
   };
 
   return (
-    <div className="py-16 my-container flex items-center justify-center">
+    <div className="py-16 my-container flex items-center justify-center px-2.5 sm:px-0">
       <title>PawsMart - LogIn</title>
       <div
         className={`w-full max-w-lg ${

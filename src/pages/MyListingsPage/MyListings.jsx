@@ -27,7 +27,7 @@ const MyListings = () => {
   }, [AxiosSecureInstance, user?.email, refetch]);
 
   return (
-    <section className="mt-12 grow">
+    <section className="mt-12 grow px-2.5 sm:px-0">
       <title>My Listings</title>
       <div className="flex flex-col gap-8">
         <div className="flex justify-between items-center">

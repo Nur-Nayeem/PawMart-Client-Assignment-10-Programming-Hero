@@ -99,7 +99,7 @@ const Register = () => {
       });
   };
   return (
-    <div className="my-container flex items-center justify-center">
+    <div className="my-container flex items-center justify-center px-2.5 sm:px-0">
       <title>PawsMart - Register</title>
       <div
         className={`w-full max-w-lg ${

@@ -6,7 +6,7 @@ const NotFoundPage = () => {
   const { theme } = use(ThemeContext);
   return (
     <section
-      className={`h-screen flex flex-1 items-center justify-center py-16 px-4 ${
+      className={`h-screen flex flex-1 items-center justify-center py-16 px-2.5 sm:px-0  ${
         theme == "light" ? "gradient-bg" : "gradient-bg-dark"
       }`}
     >
