@@ -40,8 +40,8 @@ const Login = () => {
 
     loginUser(email, password)
       .then(() => {
-        navigate(location.state || "/");
         e.target.reset();
+        navigate("/");
         setLoadingLogin(false);
         Swal.fire({
           title: "Login Succenfull",

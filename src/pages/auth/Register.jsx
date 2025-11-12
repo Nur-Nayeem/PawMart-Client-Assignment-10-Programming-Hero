@@ -48,6 +48,7 @@ const Register = () => {
       .then(() => {
         updateUserProfile(name, photourl)
           .then(() => {
+            e.target.reset();
             navigate("/");
             setLoadingReg(false);
             Swal.fire({
@@ -55,7 +56,6 @@ const Register = () => {
               icon: "success",
               draggable: true,
             });
-            e.target.reset();
           })
           .catch((err) => {
             setLoadingReg(false);
