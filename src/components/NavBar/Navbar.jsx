@@ -9,7 +9,7 @@ import ToggleTheme from "./ToggleTheme";
 const Navbar = () => {
   const { user, logOutUSer } = use(AuthContext);
   const { theme } = use(ThemeContext);
-  const imgUrl = user?.photoURL;
+  const imgUrl = user?.photoURL || "/avatar.png";
   const handleSignOutUser = () => {
     logOutUSer()
       .then(() => {
