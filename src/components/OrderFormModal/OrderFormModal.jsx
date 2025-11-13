@@ -38,7 +38,7 @@ const OrderFormModal = ({ modalRef, id, details }) => {
     axiosInstance
       .post("/order", orderFormObj)
       .then((data) => {
-        if (data.data.acknowledged) {
+        if (data.data.insertedId) {
           Swal.fire({
             title: "Submitted!",
             text: "Your Order is Successfully submitted",
@@ -68,19 +68,18 @@ const OrderFormModal = ({ modalRef, id, details }) => {
         }`}
       >
         <div
-          className={`modal-box w-full max-w-4xl rounded-xl ${
+          className={`relative modal-box w-full max-w-4xl rounded-xl ${
             theme == "light" ? "glass-blur" : "glass-blur-dark"
           }`}
         >
+          <div className="modal-action">
+            <form method="dialog">
+              <button className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors">
+                <CgClose className="text-xl cursor-pointer" />
+              </button>
+            </form>
+          </div>
           <form onSubmit={onOrderFormSubmit} className="relative p-6 sm:p-8">
-            <div className="modal-action">
-              <form method="dialog">
-                <button className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors">
-                  <CgClose className="text-xl cursor-pointer" />
-                </button>
-              </form>
-            </div>
-
             <div className="mb-6">
               <p className="dark:text-white text-secondary text-2xl sm:text-[32px] font-bold">
                 Confirm Your Order
