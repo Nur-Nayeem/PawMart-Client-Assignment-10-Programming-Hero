@@ -80,11 +80,11 @@ const Navbar = () => {
           </div>
           <Link
             to={"/"}
-            className="text-xl font-bold flex items-center gap-1.5 w-[146px]"
+            className="text-xl font-bold flex items-center gap-1 w-36"
           >
             <span className="text-2xl gradient-text">
               <Typewriter
-                words={["PawsMart"]}
+                words={["PawMart"]}
                 loop={Infinity}
                 cursor
                 cursorStyle="_"

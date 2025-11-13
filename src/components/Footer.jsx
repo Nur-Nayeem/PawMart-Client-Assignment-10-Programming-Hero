@@ -18,7 +18,7 @@ const Footer = () => {
             to={"/"}
             className="text-xl font-bold flex items-center gap-1.5"
           >
-            <span className="text-2xl gradient-text">PawsMart</span>
+            <span className="text-2xl gradient-text">PawMart</span>
             <img src="/pawprint.png" alt="logo-icon" className="w-6 h-6" />
           </Link>
           <p className="text-sm">
@@ -62,7 +62,7 @@ const Footer = () => {
 
       <div className="mt-10 text-center text-sm dark:text-gray-300 text-secondary/80">
         <hr className="my-5 max-w-5xl mx-auto dark:text-gray-300/10 text-gray-600/10" />
-        <p>© 2025 PawsMart. All rights reserved.</p>
+        <p>© 2025 PawMart. All rights reserved.</p>
       </div>
     </footer>
   );

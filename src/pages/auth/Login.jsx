@@ -83,7 +83,7 @@ const Login = () => {
 
   return (
     <div className="mt-12 my-container flex items-center justify-center px-2.5 sm:px-0">
-      <title>PawsMart - LogIn</title>
+      <title>PawMart - LogIn</title>
       <div
         className={`w-full max-w-lg ${
           theme == "light" ? "glass-blur" : "glass-blur-dark"
@@ -91,7 +91,7 @@ const Login = () => {
       >
         <div className="text-center mb-4">
           <h1 className="text-3xl font-bold flex items-center justify-center gap-1.5">
-            <span className="text-2xl gradient-text">PawsMart</span>
+            <span className="text-2xl gradient-text">PawMart</span>
             <img src="/pawprint.png" alt="logo-icon" className="w-6 h-6" />
           </h1>
           <p className="text-lg dark:text-white text-secondary mt-2">
