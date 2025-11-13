@@ -39,13 +39,16 @@ const OrderFormModal = ({ modalRef, id, details }) => {
       .post("/order", orderFormObj)
       .then((data) => {
         if (data.data.insertedId) {
+          modalRef.current?.close();
           Swal.fire({
             title: "Submitted!",
             text: "Your Order is Successfully submitted",
             icon: "success",
+          }).then(() => {
+            navigate("/my-orders");
           });
+
           setLoading(false);
-          navigate("/my-orders");
           e.target.reset();
         }
       })
