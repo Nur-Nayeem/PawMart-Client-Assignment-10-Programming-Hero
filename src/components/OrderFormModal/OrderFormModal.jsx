@@ -27,12 +27,13 @@ const OrderFormModal = ({ modalRef, id, details }) => {
       email: user.email,
       location: details.location,
       quantity,
-      price: details.price,
+      price: details.price * quantity,
       image: details.image,
       address,
       phone,
       date,
       note,
+      createdAt: new Date(),
     };
     setLoading(true);
     axiosInstance
