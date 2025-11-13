@@ -9,7 +9,7 @@ const MainLayout = () => {
   return (
     <div className={theme == "light" ? "gradient-bg" : "gradient-bg-dark"}>
       <header className="fixed top-0 w-full z-50">
-        <nav>
+        <nav className={`${theme == "light" ? "" : "bg-gray-800/90"}`}>
           <Navbar />
         </nav>
       </header>
