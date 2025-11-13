@@ -46,26 +46,28 @@ const UpdateListing = () => {
       description,
     };
     setLoading(true);
-    axiosSecureInstance
-      .patch(`/update-listing/${id}`, updatelistingObject)
-      .then(() => {
-        Swal.fire({
-          title: "Successfully updated listing",
-          icon: "success",
+    if (user) {
+      axiosSecureInstance
+        .patch(`/update-listing/${id}?email=${user.email}`, updatelistingObject)
+        .then(() => {
+          Swal.fire({
+            title: "Successfully updated listing",
+            icon: "success",
+          });
+          setLoading(false);
+          navigate("/my-listings");
+          e.target.reset();
+        })
+        .catch((err) => {
+          console.log(err);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: err,
+          });
+          setLoading(false);
         });
-        setLoading(false);
-        navigate("/my-listings");
-        e.target.reset();
-      })
-      .catch((err) => {
-        console.log(err);
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: err,
-        });
-        setLoading(false);
-      });
+    }
   };
 
   return (

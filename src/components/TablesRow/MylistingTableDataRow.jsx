@@ -9,7 +9,7 @@ const MylistingTableDataRow = ({ row, setRefetch, refetch }) => {
   const axiosSecureInstance = useAxiosSecure();
   const handleDeleteListing = () => {
     axiosSecureInstance
-      .delete(`/listings/${row._id}`)
+      .delete(`/listings/${row._id}?email=${row.email}`)
       .then(() => {
         Swal.fire({
           title: "Are you sure?",
