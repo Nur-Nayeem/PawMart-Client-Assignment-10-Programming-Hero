@@ -12,8 +12,8 @@ const RecentListing = () => {
 
   useEffect(() => {
     setLoading(true);
-    axiosInstanse.get("/recent-listings").then((data) => {
-      setRecentListing(data.data);
+    axiosInstanse.get("/listings?recent=true&limit=6").then((data) => {
+      setRecentListing(data.data.result);
       setLoading(false);
     });
   }, [axiosInstanse, recentRefetch]);

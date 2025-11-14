@@ -1,5 +1,5 @@
 import React, { use, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { motion, useScroll } from "motion/react";
 import useAxios from "../../hooks/useAxios";
 import { MyContext, ThemeContext } from "../../Contexts/Contexts";
@@ -12,56 +12,43 @@ const PetsAndSupplies = () => {
   const { category, setCategory } = use(MyContext);
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [search, setSearch] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
   const { categoryName } = useParams();
-  const navigate = useNavigate();
   const { scrollYProgress } = useScroll();
+  const limit = 6;
 
   useEffect(() => {
-    setCategory("All");
-    setLoading(true);
-    let url = "/listings";
-    if (categoryName && categoryName !== "All") {
-      url = `/listings?category=${categoryName}`;
+    let categoryQuery = category;
+    if (category === "All") {
+      categoryQuery = "";
     }
     axiosInstance
-      .get(url)
+      .get(
+        `/listings?recent=true&limit=${limit}&skip=${
+          (currentPage - 1) * limit
+        }&category=${categoryQuery}&search=${searchText}`
+      )
       .then((data) => {
-        setListings(data.data);
+        console.log(data.data.result);
+        setListings(data.data.result);
+        const page = Math.ceil(data.data.total / limit);
+        setTotalPage(page);
         setLoading(false);
       })
       .catch((err) => {
         console.log(err);
         setLoading(false);
       });
-  }, [axiosInstance, categoryName, setCategory]);
+  }, [axiosInstance, category, searchText, currentPage]);
 
   const handleCategoryChange = (e) => {
-    const selected = e.target.value;
-    setCategory(selected);
-    if (selected === "All") {
-      navigate("/category-filtered-product");
-    } else {
-      navigate(`/category-filtered-product/${selected}`);
-    }
+    setCategory(e.target.value);
   };
 
   const handleSearch = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    let url = "/listings";
-    if (search) {
-      url = `/search-listings?search=${search}`;
-    }
-    axiosInstance
-      .get(url)
-      .then((data) => {
-        setListings(data.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    setSearchText(e.target.value);
   };
 
   return (
@@ -96,10 +83,7 @@ const PetsAndSupplies = () => {
           </p>
         </div>
         <div className="flex flex-col md:flex-row gap-4 mt-6 mb-3">
-          <form
-            onSubmit={handleSearch}
-            className="flex-1 flex items-center gap-1.5"
-          >
+          <div className="flex-1 flex items-center gap-1.5">
             <label className="input px-4 h-12  rounded-full border-2 border-primary/50 bg-base-100/50  outline-none focus:outline-none w-full sm:w-max">
               <svg
                 className="h-[1em] opacity-50"
@@ -120,14 +104,13 @@ const PetsAndSupplies = () => {
               <input
                 type="search"
                 placeholder="Search"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={handleSearch}
               />
             </label>
             <button className="btn-primary py-2.5 px-5 rounded-full cursor-pointer text-white">
               Search
             </button>
-          </form>
+          </div>
 
           <div className="relative w-full md:w-56">
             <select
@@ -154,10 +137,40 @@ const PetsAndSupplies = () => {
             <h2 className="text-2xl font-medium">No Listings Found!</h2>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
-            {listings.map((list, index) => (
-              <ListingCard key={index} list={list} />
-            ))}
+          <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+              {listings.map((list, index) => (
+                <ListingCard key={index} list={list} />
+              ))}
+            </div>
+            <div className="flex gap-2.5 justify-center my-5">
+              {currentPage > 1 && (
+                <button
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                  className="btn"
+                >
+                  prev
+                </button>
+              )}
+
+              {[...Array(totalPage).keys()].map((i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i + 1)}
+                  className="btn"
+                >
+                  {i + 1}
+                </button>
+              ))}
+              {currentPage < totalPage && (
+                <button
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                  className="btn"
+                >
+                  next
+                </button>
+              )}
+            </div>
           </div>
         )}
       </div>
