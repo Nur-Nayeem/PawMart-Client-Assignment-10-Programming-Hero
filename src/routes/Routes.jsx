@@ -11,6 +11,7 @@ import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import PrivateRoute from "../PrivateRoutes/PrivateRoute";
+import ForgetPassword from "../pages/auth/ForgetPassswordPage";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -68,13 +69,23 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+    ],
+  },
+  {
+    path: "/auth",
+    Component: MainLayout,
+    children: [
       {
-        path: "auth/login",
+        path: "login",
         Component: Login,
       },
       {
-        path: "auth/register",
+        path: "register",
         Component: Register,
+      },
+      {
+        path: "forget-password",
+        element: <ForgetPassword />,
       },
     ],
   },

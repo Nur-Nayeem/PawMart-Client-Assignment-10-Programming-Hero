@@ -4,7 +4,11 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
-import { AuthContext, ThemeContext } from "../../Contexts/Contexts";
+import {
+  AuthContext,
+  EmailValueContext,
+  ThemeContext,
+} from "../../Contexts/Contexts";
 
 const Login = () => {
   const { signWithGoogle, loginUser } = use(AuthContext);
@@ -12,6 +16,7 @@ const Login = () => {
   const [error, setError] = useState(false);
   const [loadingLogin, setLoadingLogin] = useState(false);
   const [eye, setEye] = useState(false);
+  const { setTypedEmail } = use(EmailValueContext);
 
   const navigate = useNavigate();
 
@@ -81,6 +86,10 @@ const Login = () => {
       });
   };
 
+  const handleTypeEmail = (e) => {
+    setTypedEmail(e.target.value);
+  };
+
   return (
     <div className="mt-12 my-container flex items-center justify-center px-2.5 sm:px-0">
       <title>PawMart - LogIn</title>
@@ -106,6 +115,7 @@ const Login = () => {
             <div className="relative">
               <CiMail className="absolute left-3 top-1/2 -translate-y-1/2" />
               <input
+                onChange={handleTypeEmail}
                 className="w-full h-12 pl-10 pr-4 rounded-lg border-2 border-primary/50  bg-gray-200/10 focus:outline-none"
                 placeholder="email@example.com"
                 type="email"
@@ -137,7 +147,7 @@ const Login = () => {
             </div>
             <div className="text-right mt-2">
               <Link
-                to=""
+                to="/auth/forget-password"
                 className="text-sm dark:text-white text-secondary hover:underline"
               >
                 Forgot Password?

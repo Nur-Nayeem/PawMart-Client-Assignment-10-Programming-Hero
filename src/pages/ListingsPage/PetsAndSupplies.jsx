@@ -24,6 +24,7 @@ const PetsAndSupplies = () => {
     if (category === "All") {
       categoryQuery = "";
     }
+    setLoading(true);
     axiosInstance
       .get(
         `/listings?recent=true&limit=${limit}&skip=${
